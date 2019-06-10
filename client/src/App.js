@@ -6,7 +6,6 @@ import Login from './components/Login';
 //import PrivateRoute from "./PrivateRoute";
 
 function App() {
-  
   return (
     <div className="App">
       <Route exact path="/" component={Login} />
