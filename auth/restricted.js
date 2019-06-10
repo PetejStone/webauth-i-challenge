@@ -12,7 +12,7 @@ module.exports = function restricted(req, res, next) {
             if (user && bcrypt.compareSync(password, user.password)) {
                 next();
             } else {
-                res.status(401).json({message: 'Invalid password'})
+                res.status(401).json({message: 'You Shall Not Pass!'})
             }
         })
         .catch( err => {
