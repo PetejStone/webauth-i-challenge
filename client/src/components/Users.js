@@ -12,24 +12,25 @@ class Users extends React.Component {
 
    componentDidMount() {
    
-        axios.get('http://localhost:5000/api/users')
+        // axios.get('http://localhost:5000/api/users')
         
-          .then(res => {
-            console.log(`hellooo ${res.data}`)
-            this.setState({users: res.data.users})
-          })
-          .catch(err => console.log(err))
+        //   .then(res => {
+        //     console.log(`hellooo ${res.data}`)
+        //     this.setState({users: res.data.users})
+        //   })
+        //   .catch(err => console.log(err))
       
    }
     render() {
         return (
-            <div>{this.state.users.map(zoo => <div>
-                    <h1>hello</h1>
-                </div>)}</div>
+            // <div>{this.state.users.map(zoo => <div>
+            //         <h1>hello</h1>
+            //     </div>)}</div>
+            <h1>hello</h1>
            
         )
     }
     
 }
 
-export default Zoos;
+export default Users;
