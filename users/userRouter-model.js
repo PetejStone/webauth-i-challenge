@@ -18,3 +18,11 @@ function findBy(filter) {
 function findById(id) {
     return db('users').where({id: id}).first()
 }
+
+function add(user) {
+    return db('users').insert(user, 'id')
+    // .then(ids => {
+    //     const [id] = ids
+    //     return findById(id)
+    // })
+}
