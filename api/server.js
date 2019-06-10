@@ -13,7 +13,7 @@ server.get('/', (req, res, next) => {
     res.send(`<h1>Server is Running!</h1>`)
 })
 
-server.use('./api/users', userRouter)
-server.use('./api/auth', authRouter)
+server.use('/api/users', userRouter)
+server.use('/api/auth', authRouter)
 
 module.exports = server;
