@@ -3,7 +3,8 @@ const bcrypt = require('bcryptjs')
 const Users = require('../users/userRouter-model.js')
 
 module.exports = function restricted(req, res, next) {
-    const {username, password} = req.headers;
+    //const {username, password} = req.headers;
+    const {username, password} = req.body;
 
     if (username && password) {
         Users.findBy({username})

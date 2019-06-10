@@ -10,7 +10,7 @@ export const login = creds => dispatch => {
         .post('http://localhost:5000/api/auth/login', creds)
         .then(res => {
             console.log(`${res}`)
-           // localStorage.setItem("token", res.data.payload);
+            localStorage.setItem("token", res.data.payload);
             dispatch({ type: LOGIN_SUCCESS, payload: res.data.payload})
         })
         .catch(err => {
