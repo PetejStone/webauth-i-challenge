@@ -5,7 +5,6 @@ import {Route} from 'react-router-dom';
 import Login from './components/Login';
 //import PrivateRoute from "./PrivateRoute";
 
-
 function App() {
   
   return (
