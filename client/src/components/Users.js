@@ -12,7 +12,7 @@ class Users extends React.Component {
 
    componentDidMount() {
    
-        this.props.getData(this.props.credentials)
+        this.props.getData()
         
       
    }
