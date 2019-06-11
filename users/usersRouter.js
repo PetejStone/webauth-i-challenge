@@ -4,7 +4,7 @@ const router = express.Router();
 
 const restricted = require('../auth/restricted.js')
 
-router.get('/',  (req,res,next) => {
+router.get('/', restricted, (req,res,next) => {
 //     res.setHeader('Access-Control-Allow-Origin', '*');
 //     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
 //     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
