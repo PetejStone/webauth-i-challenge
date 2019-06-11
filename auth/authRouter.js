@@ -46,7 +46,7 @@ router.post('/login', (req, res) => {
         if (user && bcrypt.compareSync(password, user.password)) {
           req.session.user = user;
          
-          res.status(200).json({ message: `You have successfully logged in, your id is ${user.id}!`, token: '724&knKnmIdk&jfn%cnakwnfn%hrndnWLkfjIjak'});
+          res.status(200).json({ message: `You have successfully logged in, your id is ${user.id}!`, token: user.password});
         } else {
           res.status(401).json({ message: 'Invalid Credentials' });
         }
