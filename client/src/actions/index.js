@@ -11,7 +11,7 @@ export const login = creds => dispatch => {
         .then(res => {
             console.log(`${res}`)
             localStorage.setItem("token", res.data.payload);
-            dispatch({ type: LOGIN_SUCCESS, payload: res.data.payload})
+            dispatch({ type: LOGIN_SUCCESS, payload: res.config.data})
         })
         .catch(err => {
             console.log(err)
@@ -49,14 +49,14 @@ export const signUp = creds => dispatch => {
 export const SUBMIT_START = "SUBMIT_START"
 export const SUBMIT_SUCCESS = "SUBMIT_SUCCESS"
 export const SUBMIT_FAIL = "SUBMIT_FAIL"
-export const handleSubmit = creds => dispatch => {
+export const getData = creds => dispatch => {
     dispatch({ type: SUBMIT_START });
     return axios
-        .post('https://reader-recommend.herokuapp.com/recommend', creds)
+        .get('http://localhost:5000/api/users')
         .then(res => {
             console.log(res)
             //localStorage.setItem("token", res.data.payload);
-            dispatch({ type: SUBMIT_SUCCESS, payload: res.data})
+            dispatch({ type: SUBMIT_SUCCESS, payload: res.data.users})
         })
         .catch(err => {
             console.log(err)

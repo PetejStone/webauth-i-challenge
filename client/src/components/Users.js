@@ -1,36 +1,36 @@
 import React from 'react';
 //import {Route} from 'react-router-dom';
 import axios from 'axios';
+import {getData} from '../actions'
+import {connect} from 'react-redux';
 
 class Users extends React.Component {
    constructor() {
        super();
-       this.state = {
-           users:[]
-       }
+      
    }
 
    componentDidMount() {
    
-        // axios.get('http://localhost:5000/api/users')
+        this.props.getData(this.props.credentials)
         
-        //   .then(res => {
-        //     console.log(`hellooo ${res.data}`)
-        //     this.setState({users: res.data.users})
-        //   })
-        //   .catch(err => console.log(err))
       
    }
     render() {
         return (
-            // <div>{this.state.users.map(zoo => <div>
-            //         <h1>hello</h1>
-            //     </div>)}</div>
-            <h1>hello</h1>
+            <div>{this.props.users.map(user =>
+                 <h1>{user.username}</h1>)}
+                 </div>
+          
            
         )
     }
     
 }
 
-export default Users;
+const mapStateToProps = (state) => ({
+    credentials: state.credentials,
+    users: state.users
+})
+
+export default connect(mapStateToProps,{getData})(Users)

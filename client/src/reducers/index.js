@@ -15,7 +15,7 @@ import {
 
 } from '../actions';
 const initialState = {
-    data: [],
+    users: [],
     isLoggingIn: false,
     error: null,
     isLoading: false,
@@ -23,7 +23,8 @@ const initialState = {
     book: false,
     newUser: false,
     pending: false,
-    submitFail: false
+    submitFail: false,
+    credentials: []
 
     // Array characters, Boolean fetching, null error.
   };
@@ -38,7 +39,8 @@ const initialState = {
             case LOGIN_SUCCESS:
             return {
                 ...state,
-                loggingIn: false
+                loggingIn: false,
+                credentials: action.payload
             }
             case LOGIN_FAIL:
             return {
@@ -64,7 +66,7 @@ const initialState = {
             case SUBMIT_SUCCESS:
             return {
             ...state,
-            book: action.payload,
+            users: action.payload,
             isLoading: false
             }
             case SIGNUP_SUCCESS:
