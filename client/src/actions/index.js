@@ -1,5 +1,5 @@
 import axios from 'axios';
-//import { axiosWithAuth } from '../axiosWithAuth';
+import { axiosWithAuth } from '../axiosWithAuth';
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -10,8 +10,8 @@ export const login = creds => dispatch => {
         .post('http://localhost:5000/api/auth/login', creds)
         .then(res => {
             console.log(`${res}`)
-            localStorage.setItem("token", res.data.payload);
-            dispatch({ type: LOGIN_SUCCESS, payload: res.config.data})
+            localStorage.setItem("token", res.data.token);
+            dispatch({ type: LOGIN_SUCCESS, payload: res.data})
         })
         .catch(err => {
             console.log(err)
@@ -49,18 +49,24 @@ export const signUp = creds => dispatch => {
 export const SUBMIT_START = "SUBMIT_START"
 export const SUBMIT_SUCCESS = "SUBMIT_SUCCESS"
 export const SUBMIT_FAIL = "SUBMIT_FAIL"
-export const getData = creds => dispatch => {
+export const getData = () => dispatch => {
     dispatch({ type: SUBMIT_START });
-    return axios
-        .get('http://localhost:5000/api/users')
+    const token = localStorage.getItem('token')
+    const config = {
+        headers: {
+            Authorization: token,
+        }
+    }
+    return axiosWithAuth()
+        .get('http://localhost:5000/api/users', config)
         .then(res => {
-            console.log(res)
-            //localStorage.setItem("token", res.data.payload);
+            
+            
             dispatch({ type: SUBMIT_SUCCESS, payload: res.data.users})
         })
         .catch(err => {
             console.log(err)
-            dispatch({ type: SUBMIT_FAIL, payload: ''})
+            dispatch({ type: SUBMIT_FAIL, payload: err})
         })
 
 }

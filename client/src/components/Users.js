@@ -1,26 +1,35 @@
 import React from 'react';
 //import {Route} from 'react-router-dom';
-import axios from 'axios';
+
 import {getData} from '../actions'
 import {connect} from 'react-redux';
 
 class Users extends React.Component {
-   constructor() {
-       super();
-      
-   }
+  
 
    componentDidMount() {
-   
+       
         this.props.getData()
         
       
    }
+
+   logout = e => {
+    e.preventDefault();
+    localStorage.clear()
+    this.props.history.push('/')
+   
+
+   }
     render() {
         return (
-            <div>{this.props.users.map(user =>
-                 <h1>{user.username}</h1>)}
-                 </div>
+            <div>
+                <div>
+                {this.props.users.map(user =>
+                    <h1>{user.username}</h1>)}
+                </div>
+                <button onClick={this.logout}>Logout</button>
+            </div>
           
            
         )

@@ -15,7 +15,7 @@ const sessionConfig = {
     name: 'Leedle', //default is server ID.. changing it protects hackers from knowing what library you are using
     secret: 'Leedle Lee', //encrypt and decrtypt cookie
     cookie: {
-        maxAge: 1000 * 60,// max time in seconds * 60 = one minute
+        maxAge: 1000 * 60 * 10,// max time in seconds * 60 = one minute * 10 = ten minutes
         secure: false, /// false only during development, send cookie only over https
         httpOnly: true, //always true...only http can read.. not JS
     },
